@@ -1,264 +1,173 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
+<meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  :root {
-    --bg: #0a0c0f;
-    --surface: #111418;
-    --border: rgba(255,255,255,0.07);
-    --accent: #e8c84a;
-    --accent2: #3b8fd4;
-    --text: #f0ede6;
-    --muted: #8a8880;
-    --nav-h: 64px;
-  }
-  html { scroll-behavior: smooth; }
-  body {
-    font-family: 'Syne', sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    min-height: 100vh;
-    overflow-x: hidden;
-  }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#f4f8fd;--white:#ffffff;--surface:#eaf2fb;
+  --blue:#1a5fa8;--blue-mid:#2d7dd2;--blue-light:#e6f1fb;--blue-pale:#f0f6ff;
+  --text:#0f2a45;--muted:#4a6a8a;--border:#cce0f5;--gold:#c8a028;--nav-h:64px;
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
 
-  /* NAV */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    height: var(--nav-h);
-    background: rgba(10,12,15,0.92);
-    backdrop-filter: blur(12px);
-    border-bottom: 0.5px solid var(--border);
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 0 3rem;
-  }
-  .nav-logo {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 22px; letter-spacing: 3px;
-    color: var(--accent);
-  }
-  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
-  .nav-links a {
-    color: var(--muted); text-decoration: none; font-size: 13px;
-    letter-spacing: 1.5px; text-transform: uppercase;
-    transition: color 0.2s;
-  }
-  .nav-links a:hover { color: var(--accent); }
+nav{position:fixed;top:0;left:0;right:0;z-index:200;height:var(--nav-h);background:rgba(244,248,253,0.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 3rem}
+.nav-logo{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--blue);letter-spacing:1px}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:13px;font-weight:500;transition:color 0.2s}
+.nav-links a:hover{color:var(--blue)}
+.nav-cta{background:var(--blue);color:#fff;padding:8px 20px;border-radius:6px;font-size:13px;font-weight:600;text-decoration:none;transition:background 0.2s}
+.nav-cta:hover{background:var(--blue-mid)}
 
-  /* HERO */
-  #home {
-    min-height: 100vh;
-    display: flex; align-items: center; justify-content: space-between;
-    padding: calc(var(--nav-h) + 4rem) 3rem 4rem;
-    position: relative; overflow: hidden;
-  }
-  .hero-bg-grid {
-    position: absolute; inset: 0; z-index: 0;
-    background-image:
-      linear-gradient(rgba(56,143,212,0.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(56,143,212,0.04) 1px, transparent 1px);
-    background-size: 48px 48px;
-  }
-  .hero-bg-glow {
-    position: absolute; top: 20%; left: 30%;
-    width: 500px; height: 500px;
-    background: radial-gradient(circle, rgba(232,200,74,0.06) 0%, transparent 70%);
-    z-index: 0;
-  }
-  .hero-left { position: relative; z-index: 1; max-width: 520px; }
-  .hero-badge {
-    display: inline-block; margin-bottom: 1.5rem;
-    background: rgba(232,200,74,0.1); border: 0.5px solid rgba(232,200,74,0.3);
-    color: var(--accent); font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
-    padding: 6px 16px; border-radius: 2px;
-  }
-  .hero-title {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(54px, 7vw, 88px);
-    line-height: 0.95; letter-spacing: 2px;
-    margin-bottom: 1.5rem;
-  }
-  .hero-title span { color: var(--accent); }
-  .hero-desc {
-    font-size: 15px; line-height: 1.8;
-    color: var(--muted); margin-bottom: 2.5rem; max-width: 380px;
-  }
-  .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
-  .btn-primary {
-    background: var(--accent); color: #0a0c0f;
-    border: none; padding: 13px 28px; font-family: 'Syne', sans-serif;
-    font-size: 13px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
-    cursor: pointer; border-radius: 2px; text-decoration: none;
-    transition: opacity 0.2s, transform 0.15s;
-    display: inline-block;
-  }
-  .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
-  .btn-outline {
-    background: transparent; color: var(--text);
-    border: 0.5px solid rgba(255,255,255,0.2); padding: 13px 28px;
-    font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 700;
-    letter-spacing: 1.5px; text-transform: uppercase;
-    cursor: pointer; border-radius: 2px; text-decoration: none;
-    transition: border-color 0.2s, transform 0.15s;
-    display: inline-block;
-  }
-  .btn-outline:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-1px); }
+#home{
+  min-height:100vh;display:flex;align-items:center;justify-content:space-between;
+  padding:calc(var(--nav-h) + 5rem) 3rem 5rem;
+  background:linear-gradient(160deg,#f0f6ff 0%,#e6f1fb 50%,#f4f8fd 100%);
+  position:relative;overflow:hidden;gap:3rem;
+}
+.hero-dots{position:absolute;right:0;top:0;bottom:0;width:50%;background-image:radial-gradient(circle,#b5d4f4 1px,transparent 1px);background-size:28px 28px;opacity:0.35;z-index:0;pointer-events:none}
+.hero-left{position:relative;z-index:1;max-width:520px;flex-shrink:0}
+.trust-bar{display:flex;align-items:center;gap:10px;margin-bottom:1.5rem}
+.trust-pill{background:var(--white);border:1px solid var(--border);border-radius:100px;padding:6px 14px;font-size:11px;font-weight:600;color:var(--blue);letter-spacing:0.5px;display:flex;align-items:center;gap:6px}
+.trust-dot{width:7px;height:7px;border-radius:50%;background:#22c55e;flex-shrink:0;animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
+h1{font-family:'Playfair Display',serif;font-size:clamp(38px,5vw,62px);line-height:1.1;color:var(--text);margin-bottom:1.25rem;font-weight:700}
+h1 em{color:var(--blue);font-style:normal}
+.hero-desc{font-size:16px;line-height:1.8;color:var(--muted);margin-bottom:2rem;max-width:420px}
+.hero-ctas{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:2.5rem}
+.btn-primary{background:var(--blue);color:#fff;padding:14px 28px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;display:inline-block;transition:background 0.2s,transform 0.15s}
+.btn-primary:hover{background:var(--blue-mid);transform:translateY(-1px)}
+.btn-ghost{background:var(--white);color:var(--blue);border:1.5px solid var(--border);padding:14px 28px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;display:inline-block;transition:border-color 0.2s,transform 0.15s}
+.btn-ghost:hover{border-color:var(--blue);transform:translateY(-1px)}
+.hero-trust-strip{display:flex;gap:1.5rem;align-items:center}
+.platform-badge{display:flex;align-items:center;gap:8px;background:var(--white);border:1px solid var(--border);border-radius:8px;padding:8px 14px;font-size:12px;font-weight:600;color:var(--muted)}
+.platform-icon{width:18px;height:18px;border-radius:3px;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center}
+.fiverr-icon{background:#1dbf73;color:#fff}
+.contra-icon{background:#111;color:#fff}
+.stars{color:var(--gold);font-size:13px;letter-spacing:1px}
 
-  /* Doberman hero image area */
-  .hero-right {
-    position: relative; z-index: 1;
-    flex-shrink: 0;
-    display: flex; align-items: center; justify-content: center;
-  }
-  .dog-frame {
-    width: 380px; height: 380px;
-    position: relative;
-    display: flex; align-items: center; justify-content: center;
-  }
-  .dog-ring {
-    position: absolute; inset: 0; border-radius: 50%;
-    border: 0.5px solid rgba(232,200,74,0.15);
-    animation: spin-slow 20s linear infinite;
-  }
-  .dog-ring::before {
-    content: ''; position: absolute;
-    top: -3px; left: 50%; transform: translateX(-50%);
-    width: 6px; height: 6px; border-radius: 50%;
-    background: var(--accent);
-  }
-  @keyframes spin-slow { to { transform: rotate(360deg); } }
-  .dog-inner {
-    width: 320px; height: 320px; border-radius: 50%;
-    background: rgba(232,200,74,0.04);
-    border: 0.5px solid rgba(232,200,74,0.1);
-    display: flex; align-items: center; justify-content: center;
-    overflow: hidden; position: relative;
-  }
-  .dog-inner img {
-    width: 290px; height: 290px; object-fit: contain;
-    filter: drop-shadow(0 0 24px rgba(232,200,74,0.2));
-    animation: float 4s ease-in-out infinite;
-  }
-  @keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-12px); }
-  }
-  .dog-label {
-    position: absolute; bottom: 16px; left: 50%; transform: translateX(-50%);
-    font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
-    color: var(--accent); white-space: nowrap;
-  }
+/* VIDEO HERO AREA */
+.hero-right{position:relative;z-index:1;flex-shrink:0;display:flex;align-items:center;justify-content:center}
+.video-frame{
+  width:400px;height:400px;border-radius:24px;
+  position:relative;overflow:hidden;
+  border:2px solid rgba(26,95,168,0.18);
+  background:linear-gradient(135deg,#daeaf8 0%,#eaf2fb 100%);
+}
+.video-frame video{
+  width:100%;height:100%;object-fit:cover;
+  mix-blend-mode:multiply;
+  opacity:0.92;
+}
+.video-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(26,95,168,0.10) 0%,rgba(224,237,251,0.22) 60%,rgba(26,95,168,0.18) 100%);
+  pointer-events:none;
+  border-radius:24px;
+}
+.video-shine{
+  position:absolute;inset:0;
+  background:linear-gradient(120deg,rgba(255,255,255,0.18) 0%,transparent 60%);
+  pointer-events:none;border-radius:24px;
+}
+.video-badge{
+  position:absolute;bottom:16px;left:50%;transform:translateX(-50%);
+  background:rgba(255,255,255,0.88);backdrop-filter:blur(8px);
+  border:1px solid rgba(26,95,168,0.18);border-radius:100px;
+  padding:7px 18px;display:flex;align-items:center;gap:8px;
+  white-space:nowrap;
+}
+.video-badge-dot{width:7px;height:7px;border-radius:50%;background:var(--blue);flex-shrink:0}
+.video-badge-text{font-size:11px;font-weight:600;color:var(--blue);letter-spacing:0.5px}
+.privacy-strip{
+  position:absolute;top:16px;left:16px;right:16px;
+  background:rgba(255,255,255,0.80);backdrop-filter:blur(8px);
+  border:1px solid rgba(26,95,168,0.15);border-radius:10px;
+  padding:8px 12px;display:flex;align-items:center;gap:8px;
+}
+.shield-sm{width:22px;height:22px;background:var(--blue);border-radius:5px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.shield-sm svg{width:12px;height:12px;fill:#fff}
+.privacy-strip-text{font-size:10px;font-weight:600;color:var(--blue);line-height:1.4}
+.privacy-strip-text span{font-weight:400;color:var(--muted)}
 
-  /* SECTIONS COMMON */
-  section { padding: 6rem 3rem; }
-  .section-tag {
-    font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
-    color: var(--accent); margin-bottom: 0.75rem;
-  }
-  .section-title {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(36px, 5vw, 58px); letter-spacing: 2px;
-    margin-bottom: 3rem; line-height: 1;
-  }
-  .section-divider {
-    width: 48px; height: 2px; background: var(--accent);
-    margin-bottom: 1.5rem;
-  }
+section{padding:5rem 3rem}
+.section-label{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--blue);font-weight:600;margin-bottom:0.5rem}
+.section-title{font-family:'Playfair Display',serif;font-size:clamp(28px,4vw,42px);color:var(--text);margin-bottom:2.5rem;font-weight:700}
 
-  /* ABOUT */
-  #about { background: var(--surface); }
-  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
-  .about-text p { font-size: 15px; line-height: 1.85; color: var(--muted); margin-bottom: 1.25rem; }
-  .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
-  .stat-card {
-    background: var(--bg); border: 0.5px solid var(--border);
-    border-radius: 4px; padding: 1.5rem;
-  }
-  .stat-num {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 42px; color: var(--accent); letter-spacing: 1px; line-height: 1;
-  }
-  .stat-label { font-size: 12px; color: var(--muted); letter-spacing: 1px; text-transform: uppercase; margin-top: 4px; }
+#about{background:var(--white)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
+.about-text p{font-size:15px;line-height:1.85;color:var(--muted);margin-bottom:1rem}
+.qubes-card{background:var(--blue-pale);border:1.5px solid var(--border);border-radius:12px;padding:1.5rem;margin-top:1.5rem}
+.qubes-card h4{font-size:14px;font-weight:700;color:var(--blue);margin-bottom:0.5rem}
+.qubes-card p{font-size:13px;color:var(--muted);line-height:1.7;margin:0}
+.about-values{display:flex;flex-direction:column;gap:1rem}
+.value-row{display:flex;align-items:flex-start;gap:1rem;padding:1.25rem;background:var(--blue-pale);border-radius:10px;border:1px solid var(--border)}
+.value-icon{width:36px;height:36px;background:var(--blue);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#fff;font-size:16px}
+.value-text h4{font-size:14px;font-weight:700;color:var(--text);margin-bottom:3px}
+.value-text p{font-size:13px;color:var(--muted);line-height:1.6;margin:0}
 
-  /* PROJECTS */
-  #projects {}
-  .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
-  .project-card {
-    background: var(--surface); border: 0.5px solid var(--border);
-    border-radius: 4px; padding: 2rem;
-    transition: border-color 0.2s, transform 0.2s;
-    position: relative; overflow: hidden;
-  }
-  .project-card::before {
-    content: ''; position: absolute; top: 0; left: 0; right: 0;
-    height: 2px; background: var(--accent); transform: scaleX(0);
-    transform-origin: left; transition: transform 0.3s;
-  }
-  .project-card:hover::before { transform: scaleX(1); }
-  .project-card:hover { border-color: rgba(232,200,74,0.2); transform: translateY(-3px); }
-  .project-tag {
-    font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
-    color: var(--accent2); margin-bottom: 1rem;
-  }
-  .project-title { font-size: 18px; font-weight: 700; margin-bottom: 0.75rem; }
-  .project-desc { font-size: 14px; color: var(--muted); line-height: 1.7; }
+#services{background:var(--bg)}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.25rem}
+.service-card{background:var(--white);border:1.5px solid var(--border);border-radius:12px;padding:1.75rem;transition:border-color 0.2s,transform 0.2s}
+.service-card:hover{border-color:var(--blue-mid);transform:translateY(-3px)}
+.service-num{font-family:'Playfair Display',serif;font-size:36px;color:var(--blue-light);font-weight:700;line-height:1;margin-bottom:0.75rem}
+.service-title{font-size:16px;font-weight:700;color:var(--text);margin-bottom:0.5rem}
+.service-desc{font-size:13px;color:var(--muted);line-height:1.7}
+.service-tag{display:inline-block;margin-top:1rem;background:var(--blue-light);color:var(--blue);font-size:11px;font-weight:600;padding:4px 10px;border-radius:100px;letter-spacing:0.5px}
 
-  /* SKILLS */
-  #skills { background: var(--surface); }
-  .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
-  .skill-item {
-    background: var(--bg); border: 0.5px solid var(--border);
-    border-radius: 4px; padding: 1.25rem 1.5rem;
-    display: flex; align-items: center; gap: 12px;
-    transition: border-color 0.2s;
-  }
-  .skill-item:hover { border-color: rgba(232,200,74,0.3); }
-  .skill-dot {
-    width: 8px; height: 8px; border-radius: 50%;
-    background: var(--accent); flex-shrink: 0;
-  }
-  .skill-dot.blue { background: var(--accent2); }
-  .skill-name { font-size: 13px; font-weight: 700; letter-spacing: 0.5px; }
+#reviews{background:var(--white);padding:5rem 3rem}
+.carousel-wrap{overflow:hidden;border-radius:16px}
+.carousel-track{display:flex;transition:transform 0.45s cubic-bezier(0.4,0,0.2,1)}
+.review-card{min-width:100%;padding:0 0.5rem}
+.review-inner{background:var(--blue-pale);border:1.5px solid var(--border);border-radius:16px;padding:2.5rem;max-width:680px;margin:0 auto}
+.review-platform{display:flex;align-items:center;gap:8px;margin-bottom:1.25rem}
+.review-platform-badge{font-size:11px;font-weight:700;padding:4px 12px;border-radius:100px;letter-spacing:0.5px}
+.badge-fiverr{background:#e6f9f0;color:#0d7a4e}
+.badge-contra{background:#f0f0f0;color:#111}
+.review-stars{color:var(--gold);font-size:16px;letter-spacing:2px}
+.review-text{font-size:15px;line-height:1.85;color:var(--text);margin-bottom:1.5rem;font-style:italic}
+.review-client{display:flex;align-items:center;gap:12px}
+.client-avatar{width:42px;height:42px;border-radius:50%;background:var(--blue);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;color:#fff;flex-shrink:0}
+.client-info h4{font-size:14px;font-weight:700;color:var(--text)}
+.client-info p{font-size:12px;color:var(--muted);margin-top:2px}
+.carousel-nav{display:flex;align-items:center;justify-content:center;gap:1rem;margin-top:2rem}
+.c-btn{width:40px;height:40px;border-radius:50%;background:var(--white);border:1.5px solid var(--border);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background 0.2s,border-color 0.2s;color:var(--blue);font-size:16px;font-family:inherit}
+.c-btn:hover{background:var(--blue);color:#fff;border-color:var(--blue)}
+.c-dots{display:flex;gap:8px;align-items:center}
+.c-dot{width:8px;height:8px;border-radius:50%;background:var(--border);transition:background 0.2s,width 0.2s;cursor:pointer;border:none}
+.c-dot.active{background:var(--blue);width:22px;border-radius:100px}
 
-  /* CONTACT */
-  #contact {}
-  .contact-inner {
-    max-width: 600px;
-    border: 0.5px solid var(--border);
-    border-radius: 4px; padding: 3rem;
-    background: var(--surface);
-  }
-  .contact-inner p { font-size: 15px; color: var(--muted); line-height: 1.8; margin-bottom: 2rem; }
-  .contact-links { display: flex; flex-direction: column; gap: 1rem; }
-  .contact-link {
-    display: flex; align-items: center; gap: 1rem;
-    padding: 1rem 1.25rem;
-    background: var(--bg); border: 0.5px solid var(--border);
-    border-radius: 4px; text-decoration: none; color: var(--text);
-    font-size: 14px; font-weight: 700; letter-spacing: 0.5px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .contact-link:hover { border-color: rgba(232,200,74,0.3); color: var(--accent); }
-  .contact-link-icon { font-size: 18px; }
+#projects{background:var(--bg)}
+.projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.25rem}
+.project-card{background:var(--white);border:1.5px solid var(--border);border-top:3px solid var(--blue);border-radius:12px;padding:2rem;transition:border-color 0.2s,transform 0.2s}
+.project-card:hover{transform:translateY(-3px)}
+.project-cat{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--blue);font-weight:600;margin-bottom:0.75rem}
+.project-title{font-size:17px;font-weight:700;color:var(--text);margin-bottom:0.5rem}
+.project-desc{font-size:13px;color:var(--muted);line-height:1.7}
 
-  /* FOOTER */
-  footer {
-    border-top: 0.5px solid var(--border);
-    padding: 2rem 3rem;
-    display: flex; align-items: center; justify-content: space-between;
-  }
-  .footer-logo { font-family: 'Bebas Neue', sans-serif; font-size: 18px; letter-spacing: 3px; color: var(--accent); }
-  .footer-copy { font-size: 12px; color: var(--muted); letter-spacing: 1px; }
+#skills{background:var(--white)}
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem}
+.skill-chip{background:var(--blue-pale);border:1px solid var(--border);border-radius:8px;padding:1rem 1.25rem;display:flex;align-items:center;gap:10px;transition:border-color 0.2s}
+.skill-chip:hover{border-color:var(--blue)}
+.skill-pip{width:8px;height:8px;border-radius:50%;background:var(--blue);flex-shrink:0}
+.skill-name{font-size:13px;font-weight:600;color:var(--text)}
 
-  /* VIDEO PLACEHOLDER NOTE */
-  .video-note {
-    position: absolute; bottom: -28px; left: 50%; transform: translateX(-50%);
-    font-size: 10px; color: var(--muted); letter-spacing: 1px; white-space: nowrap;
-  }
+#contact{background:var(--blue);padding:5rem 3rem}
+#contact .section-label{color:rgba(255,255,255,0.6)}
+#contact .section-title{color:#fff}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
+.contact-intro p{font-size:15px;color:rgba(255,255,255,0.75);line-height:1.8}
+.contact-links{display:flex;flex-direction:column;gap:1rem}
+.contact-link{display:flex;align-items:center;gap:1rem;padding:1rem 1.25rem;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);border-radius:10px;text-decoration:none;color:#fff;font-size:14px;font-weight:600;transition:background 0.2s}
+.contact-link:hover{background:rgba(255,255,255,0.18)}
+.contact-icon{width:36px;height:36px;border-radius:8px;background:rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+
+footer{background:var(--text);padding:1.75rem 3rem;display:flex;align-items:center;justify-content:space-between}
+.footer-logo{font-family:'Playfair Display',serif;font-size:17px;color:#fff;font-weight:700}
+.footer-copy{font-size:12px;color:rgba(255,255,255,0.4);letter-spacing:0.5px}
 </style>
 </head>
 <body>
@@ -268,34 +177,60 @@
   <ul class="nav-links">
     <li><a href="#home">Home</a></li>
     <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#reviews">Reviews</a></li>
     <li><a href="#projects">Projects</a></li>
-    <li><a href="#skills">Skills</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
+  <a href="#contact" class="nav-cta">Hire Me</a>
 </nav>
 
 <section id="home">
-  <div class="hero-bg-grid"></div>
-  <div class="hero-bg-glow"></div>
+  <div class="hero-dots"></div>
   <div class="hero-left">
-    <div class="hero-badge">Digital Forensics &amp; Cybersecurity</div>
-    <h1 class="hero-title">
-      FOLLOW THE<br><span>EVIDENCE.</span><br>FIND THE TRUTH.
-    </h1>
-    <p class="hero-desc">
-      Forensic investigator specialising in digital evidence, disk analysis, and incident response using industry-grade tools like Autopsy, Wireshark, and Volatility.
-    </p>
+    <div class="trust-bar">
+      <div class="trust-pill"><div class="trust-dot"></div> Available for new clients</div>
+    </div>
+    <h1>Digital Forensics<br>You Can <em>Trust.</em></h1>
+    <p class="hero-desc">Private, precise, and professional. I've quietly helped clients find the truth in their data — now I'm opening my services to the public.</p>
     <div class="hero-ctas">
-      <a href="#projects" class="btn-primary">View My Cases</a>
-      <a href="#contact" class="btn-outline">Get in Touch</a>
+      <a href="#services" class="btn-primary">See My Services</a>
+      <a href="#reviews" class="btn-ghost">Client Reviews</a>
+    </div>
+    <div class="hero-trust-strip">
+      <div class="platform-badge">
+        <div class="platform-icon fiverr-icon">F</div>
+        <div>
+          <div class="stars">★★★★★</div>
+          <div style="font-size:11px;color:var(--muted);margin-top:1px">Fiverr Verified</div>
+        </div>
+      </div>
+      <div class="platform-badge">
+        <div class="platform-icon contra-icon">C</div>
+        <div>
+          <div class="stars">★★★★★</div>
+          <div style="font-size:11px;color:var(--muted);margin-top:1px">Contra Verified</div>
+        </div>
+      </div>
     </div>
   </div>
+
   <div class="hero-right">
-    <div class="dog-frame">
-      <div class="dog-ring"></div>
-      <div class="dog-inner">
-        <img src="/mnt/user-data/uploads/autop.webp" alt="Autopsy Forensics Mascot" />
-        <div class="dog-label">Autopsy Forensics</div>
+    <div class="video-frame">
+      <video autoplay loop muted playsinline>
+        <source src="hero.mp4" type="video/mp4">
+      </video>
+      <div class="video-overlay"></div>
+      <div class="video-shine"></div>
+      <div class="privacy-strip">
+        <div class="shield-sm">
+          <svg viewBox="0 0 24 24"><path d="M12 2L4 6v6c0 5.25 3.5 10.15 8 11.35C16.5 22.15 20 17.25 20 12V6L12 2z"/></svg>
+        </div>
+        <div class="privacy-strip-text">Operates on Qubes OS &nbsp;·&nbsp; <span>Zero-trace. Privacy-first.</span></div>
+      </div>
+      <div class="video-badge">
+        <div class="video-badge-dot"></div>
+        <div class="video-badge-text">Autopsy Forensics Specialist</div>
       </div>
     </div>
   </div>
@@ -304,87 +239,125 @@
 <section id="about">
   <div class="about-grid">
     <div class="about-text">
-      <p class="section-tag">About Me</p>
-      <div class="section-divider"></div>
-      <h2 class="section-title">WHO AM I</h2>
-      <p>A passionate digital forensics analyst with hands-on experience in investigating file systems, recovering deleted evidence, and analysing malware artifacts using open-source and enterprise tooling.</p>
-      <p>I believe every byte tells a story. Whether it's a corrupted drive, a suspicious process, or a hidden partition — I follow the trail until the truth surfaces.</p>
+      <div class="section-label">About Me</div>
+      <h2 class="section-title">Private work,<br>public trust.</h2>
+      <p>For years I've worked exclusively with private clients — individuals, small businesses, and professionals who needed discreet, accurate digital forensics work done without fanfare.</p>
+      <p>I'm now opening my practice to the public, backed by real results and real reviews. Every engagement is handled with the same care I gave my most sensitive private cases.</p>
+      <div class="qubes-card">
+        <h4>Why Qubes OS?</h4>
+        <p>I operate exclusively on Qubes OS — a security-focused operating system that compartmentalises every task. Your case data never touches an insecure environment. Your privacy is not a feature — it's the foundation.</p>
+      </div>
     </div>
-    <div class="about-stats">
-      <div class="stat-card"><div class="stat-num">50+</div><div class="stat-label">Cases Analysed</div></div>
-      <div class="stat-card"><div class="stat-num">12+</div><div class="stat-label">Tools Mastered</div></div>
-      <div class="stat-card"><div class="stat-num">3+</div><div class="stat-label">Years Experience</div></div>
-      <div class="stat-card"><div class="stat-num">100%</div><div class="stat-label">Evidence Integrity</div></div>
+    <div class="about-values">
+      <div class="value-row"><div class="value-icon">🔒</div><div class="value-text"><h4>Absolute Discretion</h4><p>Client identities are never disclosed. Your case stays between us.</p></div></div>
+      <div class="value-row"><div class="value-icon">🔍</div><div class="value-text"><h4>Evidence Integrity</h4><p>Strict chain of custody maintained on every case, every time.</p></div></div>
+      <div class="value-row"><div class="value-icon">⚡</div><div class="value-text"><h4>Fast Turnaround</h4><p>Efficient analysis without cutting corners — results you can act on.</p></div></div>
+      <div class="value-row"><div class="value-icon">🌐</div><div class="value-text"><h4>Remote-First</h4><p>Work with me from anywhere in the world, securely and seamlessly.</p></div></div>
     </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="section-label">What I Offer</div>
+  <h2 class="section-title">Services</h2>
+  <div class="services-grid">
+    <div class="service-card"><div class="service-num">01</div><div class="service-title">Disk &amp; File Analysis</div><p class="service-desc">Deep examination of drives and file systems using Autopsy and Sleuth Kit to uncover hidden, deleted, or tampered data.</p><div class="service-tag">Autopsy · FTK</div></div>
+    <div class="service-card"><div class="service-num">02</div><div class="service-title">Memory Forensics</div><p class="service-desc">RAM capture and analysis to detect running malware, credential theft, and volatile evidence that disappears on shutdown.</p><div class="service-tag">Volatility · Rekall</div></div>
+    <div class="service-card"><div class="service-num">03</div><div class="service-title">Network Investigation</div><p class="service-desc">PCAP analysis, traffic reconstruction, and data exfiltration detection to trace what left your network and when.</p><div class="service-tag">Wireshark · Zeek</div></div>
+    <div class="service-card"><div class="service-num">04</div><div class="service-title">Incident Response</div><p class="service-desc">Rapid triage and full timeline reconstruction after a breach — find the entry point, scope the damage, stop the bleed.</p><div class="service-tag">IR · Log Analysis</div></div>
+    <div class="service-card"><div class="service-num">05</div><div class="service-title">Private Consultation</div><p class="service-desc">Confidential one-on-one sessions for individuals who need expert forensic guidance with guaranteed discretion.</p><div class="service-tag">Private · Secure</div></div>
+    <div class="service-card"><div class="service-num">06</div><div class="service-title">OSINT &amp; Evidence Recovery</div><p class="service-desc">Open-source intelligence gathering and deleted content recovery for legal, personal, or investigative purposes.</p><div class="service-tag">OSINT · Recovery</div></div>
+  </div>
+</section>
+
+<section id="reviews">
+  <div class="section-label">Client Testimonials</div>
+  <h2 class="section-title">What clients say</h2>
+  <div class="carousel-wrap">
+    <div class="carousel-track" id="track">
+      <div class="review-card"><div class="review-inner"><div class="review-platform"><span class="review-platform-badge badge-fiverr">Fiverr</span><span class="review-stars">★★★★★</span></div><p class="review-text">"Absolutely incredible work. Found evidence I thought was gone forever. Professional, fast, and asked zero unnecessary questions. Will hire again without hesitation."</p><div class="review-client"><div class="client-avatar">M.R.</div><div class="client-info"><h4>M.R.</h4><p>Verified Fiverr Client · Private Individual</p></div></div></div></div>
+      <div class="review-card"><div class="review-inner"><div class="review-platform"><span class="review-platform-badge badge-contra">Contra</span><span class="review-stars">★★★★★</span></div><p class="review-text">"Handled a very sensitive case for me. Delivered a clean, detailed report with full chain of custody documentation. Exactly what I needed for legal proceedings."</p><div class="review-client"><div class="client-avatar">T.K.</div><div class="client-info"><h4>T.K.</h4><p>Verified Contra Client · Business Owner</p></div></div></div></div>
+      <div class="review-card"><div class="review-inner"><div class="review-platform"><span class="review-platform-badge badge-fiverr">Fiverr</span><span class="review-stars">★★★★★</span></div><p class="review-text">"I was skeptical but this exceeded all expectations. Recovered data from a drive I had written off completely. Discreet, thorough, and genuinely cares about the outcome."</p><div class="review-client"><div class="client-avatar">A.J.</div><div class="client-info"><h4>A.J.</h4><p>Verified Fiverr Client · Private Individual</p></div></div></div></div>
+      <div class="review-card"><div class="review-inner"><div class="review-platform"><span class="review-platform-badge badge-contra">Contra</span><span class="review-stars">★★★★★</span></div><p class="review-text">"Knew from the first message this was someone who takes privacy seriously. The Qubes OS setup gave me real confidence. Results were delivered ahead of schedule."</p><div class="review-client"><div class="client-avatar">S.L.</div><div class="client-info"><h4>S.L.</h4><p>Verified Contra Client · Legal Professional</p></div></div></div></div>
+    </div>
+  </div>
+  <div class="carousel-nav">
+    <button class="c-btn" id="prev">&#8592;</button>
+    <div class="c-dots" id="dots"></div>
+    <button class="c-btn" id="next">&#8594;</button>
   </div>
 </section>
 
 <section id="projects">
-  <p class="section-tag">Case Files</p>
-  <div class="section-divider"></div>
-  <h2 class="section-title">PROJECTS</h2>
+  <div class="section-label">Case Files</div>
+  <h2 class="section-title">Selected projects</h2>
   <div class="projects-grid">
-    <div class="project-card">
-      <div class="project-tag">Disk Forensics</div>
-      <div class="project-title">Deleted File Recovery</div>
-      <p class="project-desc">Recovered 2,400+ deleted files from a formatted NTFS drive using Autopsy carving modules and custom hash sets to identify contraband material.</p>
-    </div>
-    <div class="project-card">
-      <div class="project-tag">Memory Analysis</div>
-      <div class="project-title">Malware Artifact Hunt</div>
-      <p class="project-desc">Identified a fileless malware injected into lsass.exe via Volatility memory dumps, tracing C2 beacons back to an APT group infrastructure.</p>
-    </div>
-    <div class="project-card">
-      <div class="project-tag">Network Forensics</div>
-      <div class="project-title">Insider Threat Investigation</div>
-      <p class="project-desc">Captured and filtered 80GB of PCAP data using Wireshark and Zeek to identify exfiltration events by a malicious insider over 6 weeks.</p>
-    </div>
-    <div class="project-card">
-      <div class="project-tag">Log Analysis</div>
-      <div class="project-title">Incident Response Timeline</div>
-      <p class="project-desc">Built a full attack timeline using Windows Event Logs, prefetch files, and LNK artifacts to reconstruct a ransomware intrusion step-by-step.</p>
-    </div>
+    <div class="project-card"><div class="project-cat">Disk Forensics</div><div class="project-title">Deleted File Recovery</div><p class="project-desc">Recovered 2,400+ deleted files from a formatted NTFS drive using Autopsy carving modules and custom hash sets.</p></div>
+    <div class="project-card"><div class="project-cat">Memory Analysis</div><div class="project-title">Malware Artifact Hunt</div><p class="project-desc">Identified fileless malware injected into lsass.exe via Volatility memory dumps, tracing C2 infrastructure.</p></div>
+    <div class="project-card"><div class="project-cat">Network Forensics</div><div class="project-title">Insider Threat Case</div><p class="project-desc">Filtered 80GB of PCAP data to identify data exfiltration by a malicious insider over a 6-week window.</p></div>
+    <div class="project-card"><div class="project-cat">Incident Response</div><div class="project-title">Ransomware Timeline</div><p class="project-desc">Reconstructed a full ransomware intrusion timeline using Windows Event Logs, prefetch files, and LNK artifacts.</p></div>
   </div>
 </section>
 
 <section id="skills">
-  <p class="section-tag">Arsenal</p>
-  <div class="section-divider"></div>
-  <h2 class="section-title">SKILLS &amp; TOOLS</h2>
+  <div class="section-label">Arsenal</div>
+  <h2 class="section-title">Skills &amp; tools</h2>
   <div class="skills-grid">
-    <div class="skill-item"><div class="skill-dot"></div><div class="skill-name">Autopsy</div></div>
-    <div class="skill-item"><div class="skill-dot blue"></div><div class="skill-name">Wireshark</div></div>
-    <div class="skill-item"><div class="skill-dot"></div><div class="skill-name">Volatility</div></div>
-    <div class="skill-item"><div class="skill-dot blue"></div><div class="skill-name">FTK Imager</div></div>
-    <div class="skill-item"><div class="skill-dot"></div><div class="skill-name">Sleuth Kit</div></div>
-    <div class="skill-item"><div class="skill-dot blue"></div><div class="skill-name">Zeek / Bro</div></div>
-    <div class="skill-item"><div class="skill-dot"></div><div class="skill-name">YARA Rules</div></div>
-    <div class="skill-item"><div class="skill-dot blue"></div><div class="skill-name">Python Scripting</div></div>
-    <div class="skill-item"><div class="skill-dot"></div><div class="skill-name">NTFS / EXT4</div></div>
-    <div class="skill-item"><div class="skill-dot blue"></div><div class="skill-name">Incident Response</div></div>
-    <div class="skill-item"><div class="skill-dot"></div><div class="skill-name">Chain of Custody</div></div>
-    <div class="skill-item"><div class="skill-dot blue"></div><div class="skill-name">Linux CLI</div></div>
+    <div class="skill-chip"><div class="skill-pip"></div><div class="skill-name">Autopsy</div></div>
+    <div class="skill-chip"><div class="skill-pip"></div><div class="skill-name">Wireshark</div></div>
+    <div class="skill-chip"><div class="skill-pip"></div><div class="skill-name">Volatility</div></div>
+    <div class="skill-chip"><div class="skill-pip"></div><div class="skill-name">FTK Imager</div></div>
+    <div class="skill-chip"><div class="skill-pip"></div><div class="skill-name">Sleuth Kit</div></div>
+    <div class="skill-chip"><div class="skill-pip"></div><div class="skill-name">Zeek / Bro</div></div>
+    <div class="skill-chip"><div class="skill-pip"></div><div class="skill-name">YARA Rules</div></div>
+    <div class="skill-chip"><div class="skill-pip"></div><div class="skill-name">Python</div></div>
+    <div class="skill-chip"><div class="skill-pip"></div><div class="skill-name">Qubes OS</div></div>
+    <div class="skill-chip"><div class="skill-pip"></div><div class="skill-name">Linux CLI</div></div>
+    <div class="skill-chip"><div class="skill-pip"></div><div class="skill-name">OSINT</div></div>
+    <div class="skill-chip"><div class="skill-pip"></div><div class="skill-name">Chain of Custody</div></div>
   </div>
 </section>
 
 <section id="contact">
-  <p class="section-tag">Reach Out</p>
-  <div class="section-divider"></div>
-  <h2 class="section-title">CONTACT</h2>
-  <div class="contact-inner">
-    <p>Got a case that needs a second pair of eyes? Want to collaborate on a forensics project or just talk shop? Reach out — I'm always up for it.</p>
+  <div class="contact-grid">
+    <div class="contact-intro">
+      <div class="section-label">Get in Touch</div>
+      <h2 class="section-title">Ready to work<br>together?</h2>
+      <p>Whether you're a private individual, a business, or a legal professional — reach out. All enquiries are treated with complete confidentiality.</p>
+    </div>
     <div class="contact-links">
-      <a href="mailto:you@email.com" class="contact-link"><span class="contact-link-icon">✉</span> you@email.com</a>
-      <a href="https://linkedin.com" class="contact-link"><span class="contact-link-icon">in</span> LinkedIn Profile</a>
-      <a href="https://github.com" class="contact-link"><span class="contact-link-icon">⌥</span> GitHub Profile</a>
+      <a href="mailto:you@email.com" class="contact-link"><span class="contact-icon">✉</span> you@email.com</a>
+      <a href="https://fiverr.com" class="contact-link"><span class="contact-icon">F</span> Fiverr Profile</a>
+      <a href="https://contra.com" class="contact-link"><span class="contact-icon">C</span> Contra Profile</a>
+      <a href="https://linkedin.com" class="contact-link"><span class="contact-icon">in</span> LinkedIn</a>
     </div>
   </div>
 </section>
 
 <footer>
   <div class="footer-logo">FORENSIQ</div>
-  <div class="footer-copy">© 2026 — Digital Forensics Portfolio</div>
+  <div class="footer-copy">© 2026 — All enquiries handled with discretion</div>
 </footer>
 
+<script>
+const track = document.getElementById('track');
+const cards = track.querySelectorAll('.review-card');
+const dotsEl = document.getElementById('dots');
+let cur = 0;
+cards.forEach((_,i) => {
+  const d = document.createElement('button');
+  d.className = 'c-dot' + (i===0?' active':'');
+  d.onclick = () => go(i);
+  dotsEl.appendChild(d);
+});
+function go(n){
+  cur = (n + cards.length) % cards.length;
+  track.style.transform = `translateX(-${cur*100}%)`;
+  dotsEl.querySelectorAll('.c-dot').forEach((d,i) => d.classList.toggle('active', i===cur));
+}
+document.getElementById('prev').onclick = () => go(cur-1);
+document.getElementById('next').onclick = () => go(cur+1);
+setInterval(() => go(cur+1), 5000);
+</script>
 </body>
 </html>
