@@ -122,17 +122,13 @@ section{padding:5rem 3rem}
 .carousel-wrap{overflow:hidden;border-radius:16px}
 .carousel-track{display:flex;transition:transform 0.45s cubic-bezier(0.4,0,0.2,1)}
 .review-card{min-width:100%;padding:0 0.5rem}
-.review-inner{background:var(--blue-pale);border:1.5px solid var(--border);border-radius:16px;padding:2.5rem;max-width:680px;margin:0 auto}
-.review-platform{display:flex;align-items:center;gap:8px;margin-bottom:1.25rem}
+.review-inner{background:var(--white);border:1.5px solid var(--border);border-radius:16px;padding:1.5rem;max-width:640px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:1rem}
+.review-screenshot{width:100%;max-width:560px;border-radius:12px;border:1px solid var(--border);box-shadow:0 2px 16px rgba(26,95,168,0.07);display:block}
+.review-source-bar{display:flex;align-items:center;gap:8px}
 .review-platform-badge{font-size:11px;font-weight:700;padding:4px 12px;border-radius:100px;letter-spacing:0.5px}
 .badge-fiverr{background:#e6f9f0;color:#0d7a4e}
 .badge-contra{background:#f0f0f0;color:#111}
-.review-stars{color:var(--gold);font-size:16px;letter-spacing:2px}
-.review-text{font-size:15px;line-height:1.85;color:var(--text);margin-bottom:1.5rem;font-style:italic}
-.review-client{display:flex;align-items:center;gap:12px}
-.client-avatar{width:42px;height:42px;border-radius:50%;background:var(--blue);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;color:#fff;flex-shrink:0}
-.client-info h4{font-size:14px;font-weight:700;color:var(--text)}
-.client-info p{font-size:12px;color:var(--muted);margin-top:2px}
+.review-verified{font-size:11px;color:var(--muted);font-weight:500}
 .carousel-nav{display:flex;align-items:center;justify-content:center;gap:1rem;margin-top:2rem}
 .c-btn{width:40px;height:40px;border-radius:50%;background:var(--white);border:1.5px solid var(--border);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background 0.2s,border-color 0.2s;color:var(--blue);font-size:16px;font-family:inherit}
 .c-btn:hover{background:var(--blue);color:#fff;border-color:var(--blue)}
@@ -275,10 +271,8 @@ footer{background:var(--text);padding:1.75rem 3rem;display:flex;align-items:cent
   <h2 class="section-title">What clients say</h2>
   <div class="carousel-wrap">
     <div class="carousel-track" id="track">
-      <div class="review-card"><div class="review-inner"><div class="review-platform"><span class="review-platform-badge badge-fiverr">Fiverr</span><span class="review-stars">★★★★★</span></div><p class="review-text">"Absolutely incredible work. Found evidence I thought was gone forever. Professional, fast, and asked zero unnecessary questions. Will hire again without hesitation."</p><div class="review-client"><div class="client-avatar">M.R.</div><div class="client-info"><h4>M.R.</h4><p>Verified Fiverr Client · Private Individual</p></div></div></div></div>
-      <div class="review-card"><div class="review-inner"><div class="review-platform"><span class="review-platform-badge badge-contra">Contra</span><span class="review-stars">★★★★★</span></div><p class="review-text">"Handled a very sensitive case for me. Delivered a clean, detailed report with full chain of custody documentation. Exactly what I needed for legal proceedings."</p><div class="review-client"><div class="client-avatar">T.K.</div><div class="client-info"><h4>T.K.</h4><p>Verified Contra Client · Business Owner</p></div></div></div></div>
-      <div class="review-card"><div class="review-inner"><div class="review-platform"><span class="review-platform-badge badge-fiverr">Fiverr</span><span class="review-stars">★★★★★</span></div><p class="review-text">"I was skeptical but this exceeded all expectations. Recovered data from a drive I had written off completely. Discreet, thorough, and genuinely cares about the outcome."</p><div class="review-client"><div class="client-avatar">A.J.</div><div class="client-info"><h4>A.J.</h4><p>Verified Fiverr Client · Private Individual</p></div></div></div></div>
-      <div class="review-card"><div class="review-inner"><div class="review-platform"><span class="review-platform-badge badge-contra">Contra</span><span class="review-stars">★★★★★</span></div><p class="review-text">"Knew from the first message this was someone who takes privacy seriously. The Qubes OS setup gave me real confidence. Results were delivered ahead of schedule."</p><div class="review-client"><div class="client-avatar">S.L.</div><div class="client-info"><h4>S.L.</h4><p>Verified Contra Client · Legal Professional</p></div></div></div></div>
+      <div class="review-card"><div class="review-inner"><div class="review-source-bar"><span class="review-platform-badge badge-fiverr">Fiverr</span><span class="review-verified">✓ Verified review</span></div><img class="review-screenshot" src="review1.png" alt="Fiverr review from ebenezerhaastru, Germany — 5 stars, good job Neil will work with you again"/></div></div>
+      <div class="review-card"><div class="review-inner"><div class="review-source-bar"><span class="review-platform-badge badge-fiverr">Fiverr</span><span class="review-verified">✓ Verified review</span></div><img class="review-screenshot" src="review2.png" alt="Fiverr review from tallahaus, UAE — 4.3 stars, Thanks for helping me in short time"/></div></div>
     </div>
   </div>
   <div class="carousel-nav">
