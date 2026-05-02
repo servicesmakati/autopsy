@@ -103,11 +103,23 @@ section{padding:5rem 3rem}
 .qubes-card{background:var(--blue-pale);border:1.5px solid var(--border);border-radius:12px;padding:1.5rem;margin-top:1.5rem}
 .qubes-card h4{font-size:14px;font-weight:700;color:var(--blue);margin-bottom:0.5rem}
 .qubes-card p{font-size:13px;color:var(--muted);line-height:1.7;margin:0}
-.about-values{display:flex;flex-direction:column;gap:1rem}
-.value-row{display:flex;align-items:flex-start;gap:1rem;padding:1.25rem;background:var(--blue-pale);border-radius:10px;border:1px solid var(--border)}
-.value-icon{width:36px;height:36px;background:var(--blue);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#fff;font-size:16px}
-.value-text h4{font-size:14px;font-weight:700;color:var(--text);margin-bottom:3px}
-.value-text p{font-size:13px;color:var(--muted);line-height:1.6;margin:0}
+.about-right{display:flex;flex-direction:column;gap:1.5rem}
+.photo-placeholder{width:100%;aspect-ratio:4/3;border-radius:14px;border:2px dashed var(--border);background:var(--blue-pale);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0.75rem;color:var(--muted)}
+.photo-placeholder-icon{width:56px;height:56px;border-radius:50%;background:var(--border);display:flex;align-items:center;justify-content:center;font-size:24px}
+.photo-placeholder-text{font-size:12px;font-weight:600;letter-spacing:0.5px;color:var(--muted)}
+.certs-label{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--blue);font-weight:600}
+.featured-cert{border-radius:14px;border:1.5px solid var(--border);overflow:hidden;background:var(--white);box-shadow:0 4px 24px rgba(26,95,168,0.08)}
+.cert-banner{width:100%;display:block;border-radius:0}
+.cert-body{padding:1.25rem}
+.cert-screenshot{width:100%;border-radius:8px;border:1px solid var(--border);display:block;margin-bottom:1rem}
+.cert-meta{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;margin-bottom:0.75rem}
+.cert-title-block{}
+.cert-title{font-size:15px;font-weight:700;color:var(--text);margin-bottom:3px}
+.cert-instructor{font-size:12px;color:var(--muted)}
+.cert-instructor strong{color:var(--blue)}
+.cert-price-badge{background:var(--blue);color:#fff;font-size:12px;font-weight:700;padding:5px 12px;border-radius:100px;white-space:nowrap;flex-shrink:0}
+.cert-link{display:flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:var(--blue);text-decoration:none;margin-top:0.5rem}
+.cert-link:hover{text-decoration:underline}
 
 #services{background:var(--bg)}
 .services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.25rem}
@@ -188,9 +200,7 @@ footer{background:var(--text);padding:1.75rem 3rem;display:flex;align-items:cent
       <div class="trust-pill"><div class="trust-dot"></div> Available for new clients</div>
     </div>
     <h1>Digital Forensics<br>You Can <em>Trust.</em></h1>
-    <p class="hero-desc">Whether it's a breach, a suspicion, or data you thought was gone — I work quietly, precisely, and with complete respect for your privacy. After years of private client work, I'm now available to you.
-
-</p>
+    <p class="hero-desc">Private, precise, and professional. I've quietly helped clients find the truth in their data — now I'm opening my services to the public.</p>
     <div class="hero-ctas">
       <a href="#services" class="btn-primary">See My Services</a>
       <a href="#reviews" class="btn-ghost">Client Reviews</a>
@@ -246,11 +256,29 @@ footer{background:var(--text);padding:1.75rem 3rem;display:flex;align-items:cent
         <p>I operate exclusively on Qubes OS — a security-focused operating system that compartmentalises every task. Your case data never touches an insecure environment. Your privacy is not a feature — it's the foundation.</p>
       </div>
     </div>
-    <div class="about-values">
-      <div class="value-row"><div class="value-icon">🔒</div><div class="value-text"><h4>Absolute Discretion</h4><p>Client identities are never disclosed. Your case stays between us.</p></div></div>
-      <div class="value-row"><div class="value-icon">🔍</div><div class="value-text"><h4>Evidence Integrity</h4><p>Strict chain of custody maintained on every case, every time.</p></div></div>
-      <div class="value-row"><div class="value-icon">⚡</div><div class="value-text"><h4>Fast Turnaround</h4><p>Efficient analysis without cutting corners — results you can act on.</p></div></div>
-      <div class="value-row"><div class="value-icon">🌐</div><div class="value-text"><h4>Remote-First</h4><p>Work with me from anywhere in the world, securely and seamlessly.</p></div></div>
+    <div class="about-right">
+      <!-- Replace src below with your actual photo file e.g. src="neil.jpg" -->
+      <div class="photo-placeholder">
+        <div class="photo-placeholder-icon">🧑</div>
+        <div class="photo-placeholder-text">Your photo here — replace with your image file</div>
+      </div>
+      <div class="certs-label">Certifications</div>
+      <div class="featured-cert">
+        <img class="cert-banner" src="Screenshot_From_2026-05-02_00-19-53.png" alt="Autopsy Basics and Hands On 8-Hours course by Brian Carrier"/>
+        <div class="cert-body">
+          <img class="cert-screenshot" src="cert.png" alt="Completion certificate — Autopsy Basics and Hands On"/>
+          <div class="cert-meta">
+            <div class="cert-title-block">
+              <div class="cert-title">Autopsy Basics &amp; Hands On (8-Hours)</div>
+              <div class="cert-instructor">Instructed by <strong>Brian Carrier</strong> — Creator of Autopsy</div>
+            </div>
+            <div class="cert-price-badge">$495</div>
+          </div>
+          <a class="cert-link" href="https://credentials.net" target="_blank" rel="noopener">
+            ↗ View official credential on credentials.net
+          </a>
+        </div>
+      </div>
     </div>
   </div>
 </section>
