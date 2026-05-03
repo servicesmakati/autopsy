@@ -99,8 +99,19 @@ section{padding:5rem 3rem}
 
 #about{background:var(--white)}
 .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
+.about-left{display:flex;flex-direction:column;gap:1.5rem}
+.photo-wrap{display:flex;justify-content:flex-start}
+.photo-circle{
+  width:160px;height:160px;border-radius:50%;
+  background:linear-gradient(135deg,var(--blue-light) 0%,var(--surface) 100%);
+  border:3px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  overflow:hidden;position:relative;flex-shrink:0;
+  box-shadow:0 8px 32px rgba(26,95,168,0.13);
+}
+.photo-circle img{width:145px;height:145px;object-fit:contain;object-position:bottom;filter:drop-shadow(0 4px 12px rgba(26,95,168,0.18))}
 .about-text p{font-size:15px;line-height:1.85;color:var(--muted);margin-bottom:1rem}
-.qubes-card{background:var(--blue-pale);border:1.5px solid var(--border);border-radius:12px;padding:1.5rem;margin-top:1.5rem}
+.qubes-card{background:var(--blue-pale);border:1.5px solid var(--border);border-radius:12px;padding:1.5rem}
 .qubes-card h4{font-size:14px;font-weight:700;color:var(--blue);margin-bottom:0.5rem}
 .qubes-card p{font-size:13px;color:var(--muted);line-height:1.7;margin:0}
 .about-right{display:flex;flex-direction:column;gap:1.5rem}
@@ -120,6 +131,15 @@ section{padding:5rem 3rem}
 .cert-price-badge{background:var(--blue);color:#fff;font-size:12px;font-weight:700;padding:5px 12px;border-radius:100px;white-space:nowrap;flex-shrink:0}
 .cert-link{display:flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:var(--blue);text-decoration:none;margin-top:0.5rem}
 .cert-link:hover{text-decoration:underline}
+
+.faq-item{border:1.5px solid var(--border);border-radius:12px;overflow:hidden;background:var(--blue-pale)}
+.faq-q{width:100%;display:flex;align-items:center;justify-content:space-between;padding:1.1rem 1.5rem;background:none;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:15px;font-weight:600;color:var(--text);text-align:left;gap:1rem;transition:background 0.2s}
+.faq-q:hover{background:var(--blue-light)}
+.faq-q.open{color:var(--blue)}
+.faq-icon{font-size:20px;color:var(--blue);flex-shrink:0;transition:transform 0.25s;line-height:1}
+.faq-q.open .faq-icon{transform:rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height 0.35s ease,padding 0.25s;font-size:14px;line-height:1.8;color:var(--muted);padding:0 1.5rem}
+.faq-a.open{max-height:300px;padding:0 1.5rem 1.25rem}
 
 #services{background:var(--bg)}
 .services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.25rem}
@@ -186,6 +206,7 @@ footer{background:var(--text);padding:1.75rem 3rem;display:flex;align-items:cent
     <li><a href="#home">Home</a></li>
     <li><a href="#about">About</a></li>
     <li><a href="#services">Services</a></li>
+    <li><a href="#faq">FAQ</a></li>
     <li><a href="#reviews">Reviews</a></li>
     <li><a href="#projects">Projects</a></li>
     <li><a href="#contact">Contact</a></li>
@@ -246,19 +267,24 @@ footer{background:var(--text);padding:1.75rem 3rem;display:flex;align-items:cent
 
 <section id="about">
   <div class="about-grid">
-    <div class="about-text">
-      <div class="section-label">About Me</div>
-      <h2 class="section-title">Private work,<br>public trust.</h2>
-      <p>For years I've worked exclusively with private clients — individuals, small businesses, and professionals who needed discreet, accurate digital forensics work done without fanfare.</p>
-      <p>I'm now opening my practice to the public, backed by real results and real reviews. Every engagement is handled with the same care I gave my most sensitive private cases.</p>
+    <div class="about-left">
+      <div class="photo-wrap">
+        <div class="photo-circle">
+          <img src="neil.jpg" alt="Neil — Digital Forensics Specialist"/>
+        </div>
+      </div>
+      <div class="about-text">
+        <div class="section-label">About Me</div>
+        <h2 class="section-title">Private work,<br>public trust.</h2>
+        <p>For years I've worked exclusively with private clients — individuals, small businesses, and professionals who needed discreet, accurate digital forensics work done without fanfare.</p>
+        <p>I'm now opening my practice to the public, backed by real results and real reviews. Every engagement is handled with the same care I gave my most sensitive private cases.</p>
+      </div>
       <div class="qubes-card">
         <h4>Why Qubes OS?</h4>
         <p>I operate exclusively on Qubes OS — a security-focused operating system that compartmentalises every task. Your case data never touches an insecure environment. Your privacy is not a feature — it's the foundation.</p>
       </div>
     </div>
     <div class="about-right">
-      <!-- Replace src below with your actual photo file e.g. src="neil.jpg" -->
-<img src="neil.png" alt="Neil" style="width:100%;border-radius:14px;object-fit:cover;"/>
       <div class="certs-label">Certifications</div>
       <div class="featured-cert">
         <img class="cert-banner" src="Screenshot_From_2026-05-02_00-19-53.png" alt="Autopsy Basics and Hands On 8-Hours course by Brian Carrier"/>
@@ -271,7 +297,7 @@ footer{background:var(--text);padding:1.75rem 3rem;display:flex;align-items:cent
             </div>
             <div class="cert-price-badge">$495</div>
           </div>
-          <a class="cert-link" href="https://images.credential.net/embed/xlpwijkq_1637233921854.png" target="_blank" rel="noopener">
+          <a class="cert-link" href="https://credentials.net" target="_blank" rel="noopener">
             ↗ View official credential on credentials.net
           </a>
         </div>
@@ -290,6 +316,86 @@ footer{background:var(--text);padding:1.75rem 3rem;display:flex;align-items:cent
     <div class="service-card"><div class="service-num">04</div><div class="service-title">Incident Response</div><p class="service-desc">Rapid triage and full timeline reconstruction after a breach — find the entry point, scope the damage, stop the bleed.</p><div class="service-tag">IR · Log Analysis</div></div>
     <div class="service-card"><div class="service-num">05</div><div class="service-title">Private Consultation</div><p class="service-desc">Confidential one-on-one sessions for individuals who need expert forensic guidance with guaranteed discretion.</p><div class="service-tag">Private · Secure</div></div>
     <div class="service-card"><div class="service-num">06</div><div class="service-title">OSINT &amp; Evidence Recovery</div><p class="service-desc">Open-source intelligence gathering and deleted content recovery for legal, personal, or investigative purposes.</p><div class="service-tag">OSINT · Recovery</div></div>
+</div>
+</section>
+
+<section id="faq" style="background:var(--white);padding:5rem 3rem">
+  <div class="section-label">Before You Reach Out</div>
+  <h2 class="section-title">Common questions</h2>
+  <div style="max-width:780px;display:flex;flex-direction:column;gap:1rem" id="faq-list">
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span>What information do you need to start the investigation?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">Details about the device or files involved, the issue you're facing, and your goal — whether that's recovery, verification, or investigation. For device forensics, I may need an image, logs, or exported data. Message me before ordering so I can guide you through what's needed.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span>Can you recover permanently deleted files?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">In many cases, yes. Recovery depends on whether the data was overwritten. I use professional forensic tools to recover as much as possible — but results vary based on device condition and how long ago the deletion occurred. I'll always give you an honest assessment upfront.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span>Are your reports court-admissible?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">Yes. I follow standard digital forensic procedures and provide structured evidence reports suitable for legal proceedings. If you need a report tailored for court, let me know at the start — I'll make sure the documentation meets those requirements.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span>Do you guarantee 100% data recovery?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">No forensic expert can honestly promise full recovery — and you should be cautious of anyone who does. What I guarantee is professional, best-effort recovery using advanced tools, and complete transparency throughout. If you're not satisfied with the final results, you're covered by my 100% satisfaction guarantee.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span>Can you analyse email fraud or spam?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">Yes. I analyse email headers from fraud and phishing attempts and deliver a detailed proof report — tracing origin, routing, and spoofing indicators to give you evidence you can act on.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span>Can you analyse PDF files or documents for tampering?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">Absolutely. I check metadata, timestamps, revision history, and hidden changes to determine authenticity or identify signs of manipulation. Useful for contract disputes, insurance claims, or any situation where document integrity matters.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span>Do you work with both phones and computers?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">Yes. I perform forensic analysis on Android, iPhone, Windows, Mac, and external storage devices using FTK Imager, Autopsy, Cellebrite, Oxygen, and more. If you're unsure whether your device is supported, just ask.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span>Is my data safe and confidential?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">Your privacy is not a policy here — it's the foundation of how I work. I operate on Qubes OS, maintain strict confidentiality, and follow professional forensic handling standards throughout every engagement. Your case stays between us.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span>Can you detect spyware, malware, or unauthorised access?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">Yes. I perform forensic checks to identify spyware, keyloggers, malware traces, and evidence of remote access or suspicious activity — and document everything clearly so you know exactly what happened and when.</div>
+    </div>
+
   </div>
 </section>
 
@@ -361,6 +467,12 @@ footer{background:var(--text);padding:1.75rem 3rem;display:flex;align-items:cent
 </footer>
 
 <script>
+function toggleFaq(btn){
+  const answer = btn.nextElementSibling;
+  const isOpen = btn.classList.contains('open');
+  document.querySelectorAll('.faq-q.open').forEach(b=>{b.classList.remove('open');b.nextElementSibling.classList.remove('open')});
+  if(!isOpen){btn.classList.add('open');answer.classList.add('open')}
+}
 const track = document.getElementById('track');
 const cards = track.querySelectorAll('.review-card');
 const dotsEl = document.getElementById('dots');
